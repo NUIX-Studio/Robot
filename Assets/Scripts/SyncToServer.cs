@@ -35,14 +35,17 @@ public class SyncToServer : MonoBehaviour
     private void UpdateData(RobotData newRobotData)
     {
         Vector3 storedPosition = new(newRobotData.position_x, newRobotData.position_y, newRobotData.position_z);
+        Quaternion storedRotation = new(newRobotData.rotation_x, newRobotData.rotation_y, newRobotData.rotation_z, newRobotData.rotation_w);
+
         this.transform.position = storedPosition;
+        this.transform.rotation = storedRotation;
     }
 
 
     public void SyncData()
     {
-        InvokeRepeating(nameof(PushDataToServer), 1f, 1f);
-        InvokeRepeating(nameof(PullDataFromServer), 0.5f, 1f);
+        InvokeRepeating(nameof(PushDataToServer), 0f, 0.02f);
+        //InvokeRepeating(nameof(PullDataFromServer), 0.5f, 1f);
     }
 
     public void PushDataToServer()
