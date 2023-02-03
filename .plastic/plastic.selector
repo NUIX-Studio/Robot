@@ -1,0 +1,4 @@
+repository "Robot@ted_codes@cloud.cn"
+  path "/"
+    br "/main"
+    co "/main"
